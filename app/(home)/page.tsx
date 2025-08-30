@@ -1,6 +1,7 @@
 "use client";
 
-import OnboardCard from "./onboard-card";
+import { Feedback, ProspectLeads } from "./feedback";
+import { OnboardCard, WellBeing } from "./onboard-card";
 import ProgressCard from "./progress-card";
 
 function Hero() {
@@ -9,16 +10,13 @@ function Hero() {
       <div className="md:col-span-1">
         <ProgressCard />
       </div>
-      <div className="md:col-span-2 grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 px-3 py-2 gap-4 border rounded h-fit">
         <OnboardCard />
-        <div className="rounded-lg border bg-card p-4">
-          <div className="flex items-center justify-between pb-2">
-            <h3 className="text-sm font-medium">Reference (context)</h3>
-            <span className="text-xs text-muted-foreground">
-              not part of final UI
-            </span>
-          </div>
-        </div>
+        <WellBeing />
+      </div>
+      <div className="grid grid-cols-1 px-3 py-2 gap-4 border rounded h-fit">
+        <Feedback />
+        <ProspectLeads />
       </div>
     </div>
   );

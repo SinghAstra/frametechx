@@ -53,15 +53,14 @@ export function Sidebar() {
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
                       "flex items-center gap-4 rounded px-4 py-2.5 text-sm tracking-wider",
-                      "transition-all duration-300",
-                      "text-muted-foreground",
+                      "transition-all duration-300 text-background",
                       "hover:bg-muted/10 hover:text-teal-500",
                       isActive && "bg-muted/10 text-teal-500"
                     )}
                   >
                     <span className="text-pretty">{item.name}</span>
                     {item.badge && (
-                      <span className="bg-muted px-2 py-1 rounded-full">
+                      <span className="bg-background/30 text-background px-2 py-1 rounded-full">
                         {item.badge}
                       </span>
                     )}
@@ -73,7 +72,7 @@ export function Sidebar() {
         </nav>
 
         <div className="mt-auto">
-          <p className="cursor-pointer text-muted-foreground hover:text-teal-500 transition-all duration-300">
+          <p className="cursor-pointer text-background hover:text-teal-500 transition-all duration-300">
             Logout
           </p>
         </div>

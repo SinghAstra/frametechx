@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React, { ReactNode, Suspense } from "react";
 import { SWRConfig } from "swr";
-import MaskedGridBackground from "../component-x/masked-grid-background";
 import { ToastProvider } from "./toast";
 
 interface ProviderProps {
@@ -37,7 +36,6 @@ const LoadingFallback = () => {
       >
         {siteConfig.description}
       </motion.p>
-      <MaskedGridBackground />
     </motion.div>
   );
 };

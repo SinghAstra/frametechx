@@ -74,8 +74,8 @@ function StepItem({ label, done = false }: { label: string; done?: boolean }) {
         aria-hidden
         className={cn(
           "h-5 w-5",
-          "bg-green-500 rounded-full",
-          done ? "text-white" : "text-muted-foreground"
+          "bg-green-500 rounded-full text-white",
+          !done && "opacity-50"
         )}
       />
     </div>
@@ -86,16 +86,14 @@ export default function ProgressCard() {
   const progress = 85;
 
   return (
-    <div className="px-3 py-1 border flex flex-col gap-4 h-fit">
-      <h2 className="text-lg font-semibold text-foreground">
-        Account Progress
-      </h2>
+    <div className="px-3 py-2 border flex flex-col gap-4 h-fit">
+      <h2 className="text-lg font-bold">Account Progress</h2>
 
       <div className="flex items-center justify-center">
         <Donut value={progress} />
       </div>
 
-      <section className="rounded-lg border bg-card">
+      <section className="rounded-lg border bg-muted">
         <header className="px-4 py-3 border-b">
           <h3 className="text-sm font-medium text-foreground">
             Steps Completed
@@ -108,7 +106,7 @@ export default function ProgressCard() {
         </div>
       </section>
 
-      <section className="rounded border">
+      <section className="rounded border bg-muted">
         <header className="px-4 py-3 border-b">
           <h3 className="text-sm font-medium text-foreground">
             Steps Remaining

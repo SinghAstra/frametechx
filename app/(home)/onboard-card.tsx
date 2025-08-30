@@ -3,45 +3,17 @@
 import type React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { TrendingUp } from "lucide-react";
 
 type Stage = {
   label: string;
-  value: number;
-  pct: number;
-  tone?: "primary" | "muted";
+  value: string;
+  color: string;
 };
-
-function SlimBar({ value, className }: { value: number; className?: string }) {
-  const v = Math.max(0, Math.min(100, value));
-  return (
-    <div
-      className={cn("h-2 w-full rounded-full bg-muted", className)}
-      role="progressbar"
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuenow={v}
-    >
-      <div
-        className="h-2 rounded-full"
-        style={{ width: `${v}%`, backgroundColor: "var(--primary)" }}
-      />
-    </div>
-  );
-}
 
 function GrowthChip({ value = "+7.4%" }: { value?: string }) {
   return (
-    <span
-      className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs"
-      style={{
-        color: "var(--chart-2)",
-        borderColor: "var(--chart-2)",
-        backgroundColor: "color-mix(in oklab, var(--chart-2) 12%, transparent)",
-      }}
-    >
+    <span className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs border-green-500 text-green-500">
       <TrendingUp className="h-3.5 w-3.5" aria-hidden />
       {value}
     </span>
@@ -49,48 +21,43 @@ function GrowthChip({ value = "+7.4%" }: { value?: string }) {
 }
 
 function StageRow({ stage }: { stage: Stage }) {
-  const dotColor =
-    stage.tone === "muted"
-      ? "color-mix(in oklab, var(--foreground) 35%, transparent)"
-      : "var(--primary)";
   return (
     <div className="flex items-center justify-between py-2">
       <div className="flex items-center gap-2">
         <span
           className="h-2.5 w-2.5 rounded-full"
-          style={{ backgroundColor: dotColor }}
+          style={{ backgroundColor: stage.color }}
           aria-hidden
         />
         <span className="text-sm text-foreground">{stage.label}</span>
       </div>
-      <span className="text-sm font-semibold tabular-nums">
-        {String(stage.value).padStart(2, "0")}
-      </span>
+      <span className="text-sm font-semibold">{stage.value}</span>
     </div>
   );
 }
 
-export default function OnboardCard() {
+export function OnboardCard() {
   const stages: Stage[] = [
-    { label: "Stage 1 (Initial Inquiry)", value: 2, pct: 90, tone: "muted" },
+    { label: "Stage 1 ( Initial Inquiry )", value: "02", color: "#3b82f6 " },
     {
-      label: "Stage 2 (Document Submission)",
-      value: 7,
-      pct: 65,
-      tone: "primary",
+      label: "Stage 2 ( Document Submission )",
+      value: "07",
+      color: "#3b82f6",
     },
-    { label: "Stage 3 ((Training))", value: 5, pct: 40, tone: "muted" },
+    { label: "Stage 3 ( Training )", value: "05", color: "#60a5fa" },
   ];
 
   return (
-    <Card className="h-fit">
-      <CardHeader className="pb-2">
-        <div className="flex items-start justify-between">
-          <CardTitle className="text-base font-medium text-foreground">
-            Total Franchisees Onboard
-          </CardTitle>
+    <div className="px-3 py-2 border flex flex-col gap-4 h-fit rounded-md">
+      <div className="pb-2 flex flex-col gap-2">
+        <h2 className="text-lg font-bold ">Total Franchisees Onboard</h2>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl font-semibold leading-none">14</span>
+            <GrowthChip />
+          </div>
           <div className="flex -space-x-2">
-            {[0, 1, 2, 3, 4].map((i) => (
+            {[0, 1, 2, 3].map((i) => (
               <Avatar
                 key={i}
                 className="h-6 w-6 ring-2"
@@ -98,10 +65,7 @@ export default function OnboardCard() {
                   { ringColor: "var(--background)" } as React.CSSProperties
                 }
               >
-                <AvatarImage
-                  src={`/user-.png?height=24&width=24&query=user-${i}`}
-                  alt={`User ${i + 1}`}
-                />
+                <AvatarImage src={`/user-${i + 1}.jpg`} alt={`User ${i + 1}`} />
                 <AvatarFallback className="text-[10px]">
                   U{i + 1}
                 </AvatarFallback>
@@ -112,25 +76,57 @@ export default function OnboardCard() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-2 flex items-center gap-3">
-          <span className="text-3xl font-semibold leading-none">14</span>
+      <div className="grid grid-cols-6  gap-2">
+        <div className="col-span-2 bg-blue-600 h-2 rounded"></div>
+        <div className="col-span-1 bg-blue-500 h-2 rounded"></div>
+        <div className="col-span-3 bg-blue-400 h-2 rounded"></div>
+      </div>
+      <div>
+        {stages.map((s, i) => (
+          <StageRow key={i} stage={s} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function WellBeing() {
+  const stages: Stage[] = [
+    { label: "Stage 1 ( Initial Inquiry )", value: "02", color: "#3b82f6 " },
+    {
+      label: "Stage 2 ( Document Submission )",
+      value: "07",
+      color: "#3b82f6",
+    },
+    { label: "Stage 3 ( Training )", value: "05", color: "#60a5fa" },
+  ];
+
+  return (
+    <div className="px-3 py-2 border flex flex-col gap-4 h-fit rounded-md">
+      <div className="pb-2 flex flex-col gap-2">
+        <h2 className="text-lg font-bold ">Financial Wellbeing</h2>
+        <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-2">
+            <span className="text-3xl font-semibold leading-none">20</span>
+            <span className="">Total Franchises</span>
+          </div>
           <GrowthChip />
         </div>
-      </CardHeader>
+      </div>
+      <hr />
 
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          {stages.map((s, i) => (
-            <SlimBar key={i} value={s.pct} />
-          ))}
+      <div className="flex gap-2">
+        <div className="bg-muted flex-1 flex flex-col gap-2 p-2">
+          <h1 className="font-light">Target</h1>
+          <h1 className=" text-xl font-extrabold">$500,000</h1>
         </div>
-        <div className="pt-2">
-          {stages.map((s, i) => (
-            <StageRow key={i} stage={s} />
-          ))}
+        <div className="bg-muted flex-1 flex flex-col gap-2 p-2">
+          <h1 className="font-light">Current</h1>
+          <h1 className=" text-xl font-extrabold">$450,000</h1>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
