@@ -3,7 +3,7 @@ import React from "react";
 
 export function Feedback() {
   return (
-    <div className="px-3 py-2 border flex flex-col gap-4 h-fit rounded-md">
+    <div className="px-3 py-2 border flex flex-col justify-evenly h-full rounded-md">
       <div className="pb-2 flex flex-col gap-2">
         <h2 className="text-lg font-bold ">Key Insights & Feedback</h2>
         <div className="flex items-center justify-between">
@@ -24,7 +24,7 @@ export function Feedback() {
       </div>
       <hr />
 
-      <div className="bg-muted flex-1 flex flex-col gap-2 p-2">
+      <div className="bg-muted flex flex-col gap-2 p-2">
         <h1 className="font-bold">Feedback</h1>
         <div className="flex gap-2 items-center">
           <div className="w-4 h-2 rounded-full bg-primary" />
@@ -50,7 +50,7 @@ export function ProspectLeads() {
     },
   ];
   return (
-    <div className="px-3 py-2 border flex flex-col gap-2 h-fit rounded-md">
+    <div className="px-3 py-2 border flex flex-col justify-evenly h-full rounded-md">
       <h2 className="text-lg font-bold mb-2">Prospect Leads</h2>
       {leads.map((lead, index) => {
         return (

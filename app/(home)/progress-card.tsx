@@ -86,8 +86,8 @@ export default function ProgressCard() {
   const progress = 85;
 
   return (
-    <div className="px-3 py-2 border flex flex-col gap-4 h-fit">
-      <h2 className="text-lg font-bold">Account Progress</h2>
+    <div className="md:col-span-1 px-3 py-2 border flex flex-col justify-evenly h-full rounded">
+      <span className="text-lg font-bold mx-auto">Account Progress</span>
 
       <div className="flex items-center justify-center">
         <Donut value={progress} />

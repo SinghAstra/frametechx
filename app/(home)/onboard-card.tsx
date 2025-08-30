@@ -22,7 +22,7 @@ function GrowthChip({ value = "+7.4%" }: { value?: string }) {
 
 function StageRow({ stage }: { stage: Stage }) {
   return (
-    <div className="flex items-center justify-between py-2">
+    <div className="flex items-center justify-between flex-1 py-2">
       <div className="flex items-center gap-2">
         <span
           className="h-2.5 w-2.5 rounded-full"
@@ -48,7 +48,7 @@ export function OnboardCard() {
   ];
 
   return (
-    <div className="px-3 py-2 border flex flex-col gap-4 h-fit rounded-md">
+    <div className="px-3 py-2 border flex flex-col justify-evenly flex-1 rounded-md">
       <div className="pb-2 flex flex-col gap-2">
         <h2 className="text-lg font-bold ">Total Franchisees Onboard</h2>
         <div className="flex items-center justify-between">
@@ -104,7 +104,7 @@ export function WellBeing() {
   ];
 
   return (
-    <div className="px-3 py-2 border flex flex-col gap-4 h-fit rounded-md">
+    <div className="px-3 py-2 border flex flex-col justify-evenly flex-1 rounded-md">
       <div className="pb-2 flex flex-col gap-2">
         <h2 className="text-lg font-bold ">Financial Wellbeing</h2>
         <div className="flex items-center justify-between">
