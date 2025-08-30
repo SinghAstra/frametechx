@@ -1,7 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { CheckCircle2 } from "lucide-react";
 

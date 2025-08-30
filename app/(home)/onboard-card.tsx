@@ -93,16 +93,6 @@ export function OnboardCard() {
 }
 
 export function WellBeing() {
-  const stages: Stage[] = [
-    { label: "Stage 1 ( Initial Inquiry )", value: "02", color: "#3b82f6 " },
-    {
-      label: "Stage 2 ( Document Submission )",
-      value: "07",
-      color: "#3b82f6",
-    },
-    { label: "Stage 3 ( Training )", value: "05", color: "#60a5fa" },
-  ];
-
   return (
     <div className="px-3 py-2 border flex flex-col justify-evenly flex-1 rounded-md">
       <div className="pb-2 flex flex-col gap-2">
